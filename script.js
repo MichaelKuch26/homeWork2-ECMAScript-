@@ -70,38 +70,58 @@ student2.displayInfo();
 // phonebook.deleteContact("Иванов");
 // console.log(phonebook.contacts); // [{ name: "Петров", phone: "987-65-43" }]
 
+// class Phonebook {
+//   contacts = [];
+  
+//   constructor (name, phone) {
+//     this.name = name,
+//     this.phone = phone
+//   }
+//   addContact(name, phone) {
+//     let contact = {name, phone};
+//     this.contacts.push(contact);
+//   }
+//   findContactByName(name) {
+//     for (let i = 0; i < this.contacts.length; i++) {
+//       if (this.contacts[i].name === name) {
+//         return this.contacts[i];
+//       }  
+//     }
+//   }
+//   findContactByPhone(phone) {
+//     for (let i = 0; i < this.contacts.length; i++) {
+//       if (this.contacts[i].phone === phone) {
+//         return this.contacts[i];
+//       }  
+//     }
+//   }
+//   deleteContact(name) {
+//     for (let i = 0; i < this.contacts.length; i++) {
+//       if (this.contacts[i].name === name) {
+//         let filtered = this.contacts.filter(f => f.name !== name);
+//         this.contacts = filtered;
+//       }  
+//     }
+//   }
+// }
+
 class Phonebook {
   contacts = [];
-  
-  constructor (name, phone) {
-    this.name = name,
-    this.phone = phone
-  }
+
   addContact(name, phone) {
-    let contact = {name, phone};
-    this.contacts.push(contact);
+      this.contacts.push({ name, phone });
   }
-  findContactByName(name) {
-    for (let i = 0; i < this.contacts.length; i++) {
-      if (this.contacts[i].name === name) {
-        return this.contacts[i];
-      }  
-    }
+
+  findContactByName(searchName) {
+      return this.contacts.find((contact) => contact.name === searchName);
   }
-  findContactByPhone(phone) {
-    for (let i = 0; i < this.contacts.length; i++) {
-      if (this.contacts[i].phone === phone) {
-        return this.contacts[i];
-      }  
-    }
+
+  findContactByPhone(searchPhone) {
+      return this.contacts.find((contact) => contact.phone === searchPhone);
   }
-  deleteContact(name) {
-    for (let i = 0; i < this.contacts.length; i++) {
-      if (this.contacts[i].name === name) {
-        let filtered = this.contacts.filter(f => f.name !== name);
-        this.contacts = filtered;
-      }  
-    }
+
+  deleteContact(searchName) {
+      this.contacts = this.contacts.filter((contact) => contact.name !== searchName);
   }
 }
 
